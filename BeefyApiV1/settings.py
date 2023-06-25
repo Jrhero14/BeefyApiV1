@@ -14,6 +14,12 @@ from pathlib import Path
 import os
 from datetime import timedelta
 from google.oauth2 import service_account
+from dotenv import load_dotenv
+from pathlib import Path
+
+# Load Dotenv
+path_env = Path('./.env')
+load_dotenv(path_env)
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -31,7 +37,7 @@ GS_BUCKET_NAME = 'beefy-bucket'
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-b-lo$rg1z-r46jpxias&!!cpn%(-(-kqmojy*dtfy47xm^1zk+'
+SECRET_KEY = os.getenv('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -101,11 +107,11 @@ DATABASES = {
 # DATABASES = {
 #     'default': {
 #         'ENGINE': 'django.db.backends.mysql',
-#         'NAME': 'beefydb',
-#         'USER': 'root',
-#         'PASSWORD': 'admin123',
-#         'HOST': '34.101.125.223',
-#         'PORT': '3306',
+#         'NAME': os.getenv('DBNAME'),
+#         'USER': os.getenv('DBUSER'),
+#         'PASSWORD': os.getenv('DBPASSWORD'),
+#         'HOST': os.getenv('DBHOST'),
+#         'PORT': os.getenv('DBPORT'),
 #     }
 # }
 
