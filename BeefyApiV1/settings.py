@@ -40,11 +40,11 @@ GS_BUCKET_NAME = 'beefy-bucket'
 SECRET_KEY = os.getenv('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 
-CSRF_TRUSTED_ORIGINS = ['http://localhost', 'https://beefy-ml-b52v2foiya-et.a.run.app']
+CSRF_TRUSTED_ORIGINS = ['http://localhost', 'https://beefy-be-b52v2foiya-et.a.run.app/']
 
 # Application definition
 
@@ -96,24 +96,24 @@ WSGI_APPLICATION = 'BeefyApiV1.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
-
-# For Production
 # DATABASES = {
 #     'default': {
-#         'ENGINE': 'django.db.backends.mysql',
-#         'NAME': os.getenv('DBNAME'),
-#         'USER': os.getenv('DBUSER'),
-#         'PASSWORD': os.getenv('DBPASSWORD'),
-#         'HOST': os.getenv('DBHOST'),
-#         'PORT': os.getenv('DBPORT'),
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
 #     }
 # }
+
+# For Production
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': os.getenv('DBNAME'),
+        'USER': os.getenv('DBUSER'),
+        'PASSWORD': os.getenv('DBPASSWORD'),
+        'HOST': os.getenv('DBHOST'),
+        'PORT': os.getenv('DBPORT'),
+    }
+}
 
 
 # Password validation
